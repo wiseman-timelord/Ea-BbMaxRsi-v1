@@ -46,7 +46,7 @@ input string ___Ea_Settings___ = "--= EA Settings - (Settings For The Ea) =--";
 input int MagicNumber = 12345; 
 input double LossPercentOff = 25.0;
 input string ___Timer_Settings___ = "--= Timer Settings - (Settings For Timings) =--";
-input double MaxSpreadInPips = 2.0;
+input double MaxSpreadInPips = 25.0;
 input bool TradeOnMonday = true;
 input bool TradeOnTuesday = true;
 input bool TradeOnWednesday = true;
