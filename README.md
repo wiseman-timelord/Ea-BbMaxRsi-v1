@@ -4,7 +4,7 @@
 The EA has already been further developed elsewhere, but there will be no further updates here, this one here works well enough as a example EA.
 
 ## Description
-The "Wisetime_BB-MAX-RSI-CE" EA for MetaTrader 5 is a cut down version of my EA, serving as a solid foundation for developing your own trading bot. It combines Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable risk management and trading settings. This adaptable and efficient tool is designed to cater to various market scenarios and trading styles.
+The "Wisetime_BB-MAX-RSI-CE" EA for MetaTrader 5 is a cut down version of my EA, serving as a solid foundation for developing your own trading bot. It combines Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable risk management and trading settings. This adaptable and efficient tool is designed to cater to various market scenarios and trading styles. In short, it, is no frills and would require further work to become a profitable/reliable EA.
 
 ### Features
 - **Multiple Strategies:** Offers Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable settings.
