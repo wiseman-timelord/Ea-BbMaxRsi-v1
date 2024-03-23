@@ -1,8 +1,21 @@
 # Ea-BbMaxRsi-v1
-A cut down version of my EA, a good base for developing your own EA.
 
+### Status
+The EA has already been further developed, but there will be no further updates here, this one here works well enough as a example working EA.
 
+## Description
+The "Wisetime_BB-MAX-RSI-CE" EA for MetaTrader 5 is a cut down version of my EA, serving as a solid foundation for developing your own trading bot. It combines Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable risk management and trading settings. This adaptable and efficient tool is designed to cater to various market scenarios and trading styles.
 
+### Features
+- **Multiple Strategies:** Offers Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable settings.
+- **Trade Directionality:** Allows trend following, trend reversal, and bi-directional trades.
+- **Risk Management:** Enables setting risk levels, stop loss, and take profit to protect capital.
+- **Custom Time Frames:** Supports various time frames from 30 minutes to 12 hours for strategy execution.
+- **Day-of-Week Control:** Permits trading on selected weekdays, optimizing trading strategy.
+- **Equity Protection:** Stops trading if losses exceed a specified percentage, safeguarding account equity.
+- **Signal Processing:** Combines multiple indicators for robust buy or sell decisions.
+- **Spread Management:** Executes trades considering spread conditions to ensure favorable entry.
+- **Magic Number Use:** Identifies trades with a unique number, distinguishing EA-managed trades.
 
 ### Preview
 - The external inputs...
@@ -45,3 +58,18 @@ input int RSI_Period = 14;
 input double RSI_Buy_Level = 30.0;
 input double RSI_Sell_Level = 70.0;
 ```
+
+## Usage
+- Do not use it, you will loose money, unless...
+1. You know what you are doing.
+2. You are not trading money, that you do not mind loosing.
+3. You have somehow upgraded the code, to make it more effective.
+4. You have done backtesing on it.
+5. You have done forward backtest on demo account.
+
+### Notes
+- To avoid market manipulation you should use a TimeFrame over M5, but, I would use at least M15, to remove such randomness.
+- To gain consistent results, I would advise backtesting for 4 years of data, therein, you would probably want your TimeFrame to then become M30 or H1, for speed.
+
+## Disclaimer
+This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
