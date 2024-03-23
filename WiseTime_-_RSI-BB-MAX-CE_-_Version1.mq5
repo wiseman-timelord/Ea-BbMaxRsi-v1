@@ -46,7 +46,7 @@ input string ___Ea_Settings___ = "--= EA Settings - (Settings For The Ea) =--";
 input int MagicNumber = 12345; 
 input double LossPercentOff = 25.0;
 input string ___Timer_Settings___ = "--= Timer Settings - (Settings For Timings) =--";
-input double SpreadPercent = 10.0;
+input double MaxSpreadInPips = 2.0;
 input bool TradeOnMonday = true;
 input bool TradeOnTuesday = true;
 input bool TradeOnWednesday = true;
@@ -126,7 +126,6 @@ int OnInit() {
     handleBBLower = iBands(_Symbol, bbTimeFrameConverted, BB_Period, bbDeviationInt, 0, PRICE_CLOSE);
     handleFastMA = iMA(_Symbol, (ENUM_TIMEFRAMES)MAX_TimeFrame, FastMA_Period, 0, MODE_EMA, PRICE_CLOSE);
     handleSlowMA = iMA(_Symbol, (ENUM_TIMEFRAMES)MAX_TimeFrame, SlowMA_Period, 0, MODE_EMA, PRICE_CLOSE);
-    spreadThreshold = TakeProfit * SpreadPercent / 100.0;
     ArraySetAsSeries(lastUpperBand, true);
     ArraySetAsSeries(lastLowerBand, true);
     ArraySetAsSeries(lastFastMAValues, true);
@@ -280,7 +279,6 @@ void CheckRSISignal(bool& rsiBuySignal, bool& rsiSellSignal) {
     }
 }
 
-
 // Execute Trade
 void ExecuteTrade(bool isBuy) {
     if((isBuy && Order_Direction == SELL_ONLY) || (!isBuy && Order_Direction == BUY_ONLY)) {
@@ -302,17 +300,19 @@ void ExecuteTrade(bool isBuy) {
         Print("Failed to retrieve tick data for ", _Symbol);
         return;
     }
-    double spread = (lastTick.ask - lastTick.bid) / _Point;
-    if(spread > spreadThreshold) {
-        Print("Current spread (", spread, ") is higher than allowed by SpreadPercent (", spreadThreshold, "). Trade not executed.");
+    double spread = lastTick.ask - lastTick.bid;
+    double spreadInPips = spread / _Point;
+    double spreadThresholdInPips = MaxSpreadInPips;
+    if(spreadInPips > spreadThresholdInPips) {
+        Print("Current spread (", spreadInPips, " pips) is higher than allowed (", MaxSpreadInPips, " pips). Trade not executed.");
         return;
     }
     double price = isBuy ? lastTick.ask : lastTick.bid;
     double adjustedSL = isBuy ? price - StopLoss * _Point : price + StopLoss * _Point;
     double adjustedTP = isBuy ? price + TakeProfit * _Point : price - TakeProfit * _Point;
     double volume = NormalizeDouble(AccountInfoDouble(ACCOUNT_EQUITY) * RiskPercent / 100.0 / 10000, 2);
-    volume = MathMax(volume, 0.01); // Ensure minimum volume
-    volume = NormalizeDouble(volume, 2); // Normalize volume
+    volume = MathMax(volume, 0.01);
+    volume = NormalizeDouble(volume, 2);
     string tradeType = isBuy ? "Buy" : "Sell";
     string tradeComment = "Trade Order MN: " + IntegerToString(MagicNumber);
     if((isBuy && trade.Buy(volume, _Symbol, price, adjustedSL, adjustedTP, tradeComment)) ||
