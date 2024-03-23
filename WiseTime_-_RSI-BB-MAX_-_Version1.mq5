@@ -1,4 +1,4 @@
-// Script: Wisetime_BB-MAX-RSI_Version1  <<<--- Line Number 1
+// Script: Wisetime_BB-MAX-RSI-CE  <<<--- Line Number 1
 #property copyright "See Accompanying Licence"
 #property link      "https://github.com/wiseman-timelord"
 #property version   "1.00"
@@ -46,7 +46,7 @@ input string ___Ea_Settings___ = "--= EA Settings - (Settings For The Ea) =--";
 input int MagicNumber = 12345; 
 input double LossPercentOff = 25.0;
 input string ___Timer_Settings___ = "--= Timer Settings - (Settings For Timings) =--";
-input double MaxSpreadInPips = 25.0;
+input double MaxSpreadInPips = 2.0;
 input bool TradeOnMonday = true;
 input bool TradeOnTuesday = true;
 input bool TradeOnWednesday = true;
@@ -222,6 +222,50 @@ void TradeManager() {
     else if(finalSellSignal) ExecuteTrade(false);
 }
 
+// Execute Trade
+void ExecuteTrade(bool isBuy) {
+    if((isBuy && Order_Direction == SELL_ONLY) || (!isBuy && Order_Direction == BUY_ONLY)) {
+        Print("Trade direction not allowed by settings.");
+        return;
+    }
+    int openPositions = 0;
+    for(int i = PositionsTotal() - 1; i >= 0; i--) {
+        if(PositionSelectByTicket(PositionGetTicket(i)) && PositionGetString(POSITION_SYMBOL) == _Symbol) {
+            openPositions++;
+        }
+    }
+    if(openPositions >= Trade_Slots) {
+        Print("Maximum number of trade slots reached.");
+        return;
+    }
+    MqlTick lastTick;
+    if(!SymbolInfoTick(_Symbol, lastTick)) {
+        Print("Failed to retrieve tick data for ", _Symbol);
+        return;
+    }
+    double spread = lastTick.ask - lastTick.bid;
+    double spreadInPips = spread / _Point;
+    double spreadThresholdInPips = MaxSpreadInPips;
+    if(spreadInPips > spreadThresholdInPips) {
+        Print("Current spread (", spreadInPips, " pips) is higher than allowed (", MaxSpreadInPips, " pips). Trade not executed.");
+        return;
+    }
+    double price = isBuy ? lastTick.ask : lastTick.bid;
+    double adjustedSL = isBuy ? price - StopLoss * _Point : price + StopLoss * _Point;
+    double adjustedTP = isBuy ? price + TakeProfit * _Point : price - TakeProfit * _Point;
+    double volume = NormalizeDouble(AccountInfoDouble(ACCOUNT_EQUITY) * RiskPercent / 100.0 / 10000, 2);
+    volume = MathMax(volume, 0.01);
+    volume = NormalizeDouble(volume, 2);
+    string tradeType = isBuy ? "Buy" : "Sell";
+    string tradeComment = "Trade Order MN: " + IntegerToString(MagicNumber);
+    if((isBuy && trade.Buy(volume, _Symbol, price, adjustedSL, adjustedTP, tradeComment)) ||
+       (!isBuy && trade.Sell(volume, _Symbol, price, adjustedSL, adjustedTP, tradeComment))) {
+        Print(tradeType + " order placed successfully with Magic Number in comment.");
+    } else {
+        Print("Failed to place " + tradeType + " order: Error ", GetLastError());
+    }
+}
+
 // Bollinger Bands Strategy
 void CheckBBSignal(bool& bbBuySignal, bool& bbSellSignal) {
     bbBuySignal = false;
@@ -276,50 +320,6 @@ void CheckRSISignal(bool& rsiBuySignal, bool& rsiSellSignal) {
             rsiSellSignal = RSI_Direction == REVERSE_TREND;
             break;
         }
-    }
-}
-
-// Execute Trade
-void ExecuteTrade(bool isBuy) {
-    if((isBuy && Order_Direction == SELL_ONLY) || (!isBuy && Order_Direction == BUY_ONLY)) {
-        Print("Trade direction not allowed by settings.");
-        return;
-    }
-    int openPositions = 0;
-    for(int i = PositionsTotal() - 1; i >= 0; i--) {
-        if(PositionSelectByTicket(PositionGetTicket(i)) && PositionGetString(POSITION_SYMBOL) == _Symbol) {
-            openPositions++;
-        }
-    }
-    if(openPositions >= Trade_Slots) {
-        Print("Maximum number of trade slots reached.");
-        return;
-    }
-    MqlTick lastTick;
-    if(!SymbolInfoTick(_Symbol, lastTick)) {
-        Print("Failed to retrieve tick data for ", _Symbol);
-        return;
-    }
-    double spread = lastTick.ask - lastTick.bid;
-    double spreadInPips = spread / _Point;
-    double spreadThresholdInPips = MaxSpreadInPips;
-    if(spreadInPips > spreadThresholdInPips) {
-        Print("Current spread (", spreadInPips, " pips) is higher than allowed (", MaxSpreadInPips, " pips). Trade not executed.");
-        return;
-    }
-    double price = isBuy ? lastTick.ask : lastTick.bid;
-    double adjustedSL = isBuy ? price - StopLoss * _Point : price + StopLoss * _Point;
-    double adjustedTP = isBuy ? price + TakeProfit * _Point : price - TakeProfit * _Point;
-    double volume = NormalizeDouble(AccountInfoDouble(ACCOUNT_EQUITY) * RiskPercent / 100.0 / 10000, 2);
-    volume = MathMax(volume, 0.01);
-    volume = NormalizeDouble(volume, 2);
-    string tradeType = isBuy ? "Buy" : "Sell";
-    string tradeComment = "Trade Order MN: " + IntegerToString(MagicNumber);
-    if((isBuy && trade.Buy(volume, _Symbol, price, adjustedSL, adjustedTP, tradeComment)) ||
-       (!isBuy && trade.Sell(volume, _Symbol, price, adjustedSL, adjustedTP, tradeComment))) {
-        Print(tradeType + " order placed successfully with Magic Number in comment.");
-    } else {
-        Print("Failed to place " + tradeType + " order: Error ", GetLastError());
     }
 }
 
