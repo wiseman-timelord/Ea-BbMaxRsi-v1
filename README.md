@@ -73,8 +73,8 @@ input double RSI_Sell_Level = 70.0;
 4. You have done extensive backtesing on it.
 5. You have done forward backtest on demo account.
 - All that said...
-1. Copy the Ea to your "MQL5\Experts" folder.
-2. Load the Settings file, ensure genetic backtest is selected.
+1. Copy the Ea to your `MQL5\Experts` folder.
+2. Load the `*.set` Settings file provided, ensure genetic backtest is selected.
 3. Its not great, but the loss-shutdown input will produce better quality results with less losses, the idea is put it higher for backtesting, then loosen it up for live/demo trading.
 4. Setup the other parts of the backtest, note its designed for between a M30-H12 timeframe.
 5. Run genetic backtest. 
@@ -84,6 +84,7 @@ input double RSI_Sell_Level = 70.0;
 - To gain consistent results, I would advise backtesting for 4 years of data, therein, you would probably want your TimeFrame to then become M30 or H1, for speed.
 - I do notice that doing a backtest for short periods of history with a high takeprofit will definately result in non-reproducable results.
 - If you add more than 3 strategies, it starts to become a massive number of calculations involved, also GPT context suffers.
+- GPT: "Considering the complexity and features of your EA, a base price could be in the $50 to $100 range"
 
 ## Disclaimer
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
