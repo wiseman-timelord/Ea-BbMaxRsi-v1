@@ -66,10 +66,17 @@ input double RSI_Sell_Level = 70.0;
 3. You have somehow upgraded the code, to make it more effective.
 4. You have done backtesing on it.
 5. You have done forward backtest on demo account.
+- All that said...
+1. Copy the Ea to your "MQL5\Experts" folder.
+2. Load the Settings file. 
+3. Its not great, but the loss-shutdown input will produce better quality results with less losses, you could put it high for backtesting, then loosen it up later.
+4. Setup the other parts of the backtest, note its designed for between a M30-H12 timeframe. 
+5. Run genetic backtest. 
 
 ### Notes
 - To avoid market manipulation you should use a TimeFrame over M5, but, I would use at least M15, to remove such randomness.
 - To gain consistent results, I would advise backtesting for 4 years of data, therein, you would probably want your TimeFrame to then become M30 or H1, for speed.
+- I do notice that doing a backtest for short periods of history with a high takeprofit will definately result in non-reproducable results.
 
 ## Disclaimer
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
