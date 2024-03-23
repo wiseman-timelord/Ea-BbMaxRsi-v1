@@ -80,6 +80,7 @@ input double RSI_Sell_Level = 70.0;
 5. Run genetic backtest. 
 
 ### Notes
+- The number of bars thing, is to coordinate signals between indicators, there are 2 enums for this, long and short, same with timeframes I think.
 - To avoid market manipulation you should use a TimeFrame over M5, but, I would use at least M15, to remove such randomness.
 - To gain consistent results, I would advise backtesting for 4 years of data, therein, you would probably want your TimeFrame to then become M30 or H1, for speed.
 - I do notice that doing a backtest for short periods of history with a high takeprofit will definately result in non-reproducable results.
