@@ -59,17 +59,23 @@ input double RSI_Buy_Level = 30.0;
 input double RSI_Sell_Level = 70.0;
 ```
 
-## Usage
+## Requirements
+- MetaTrader 5.
+- A demo account.
+- A lot of time.
+- Algo-Trading Experience.
+
+### Usage
 - Do not use it, you will loose money, unless...
 1. You know what you are doing.
 2. You are not trading money, that you do not mind loosing.
 3. You have somehow upgraded the code, to make it more effective.
-4. You have done backtesing on it.
+4. You have done extensive backtesing on it.
 5. You have done forward backtest on demo account.
 - All that said...
 1. Copy the Ea to your "MQL5\Experts" folder.
-2. Load the Settings file. 
-3. Its not great, but the loss-shutdown input will produce better quality results with less losses, you could put it high for backtesting, then loosen it up later.
+2. Load the Settings file, ensure genetic backtest is selected.
+3. Its not great, but the loss-shutdown input will produce better quality results with less losses, the idea is put it higher for backtesting, then loosen it up for live/demo trading.
 4. Setup the other parts of the backtest, note its designed for between a M30-H12 timeframe. 
 5. Run genetic backtest. 
 
