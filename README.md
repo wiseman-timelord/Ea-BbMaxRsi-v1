@@ -1,7 +1,7 @@
 # Ea-BbMaxRsi-v1
 
 ### Status
-The EA has already been further developed elsewhere, but there will be no further updates here, this one here works well enough as a example EA.
+The EA represents stage 1 of completion, this works well enough as a example EA, feel free to, fork away or share your private versions, but please dont sell it, I can't sell it on Mql5 site due to reasons, so thats only fair...
 
 ## Description
 The "BB-MAX-RSI" EA Version 1 for MetaTrader 5, is a cut down version of the EA I have personally developed, serving as a solid foundation for developing your own trading bot. It combines Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable risk management and trading settings. This adaptable and efficient tool is designed to cater to various market scenarios and trading styles. In short, its somewhat no frills, and would require further work to become a profitable/reliable EA. Give it a go, swap out the strategies, add new features, after doing so, you would possibly have a winner! 
