@@ -1,4 +1,4 @@
-// Script: Wisetime_BB-MAX-RSI-CE  <<<--- Line Number 1
+// Script: Wisetime_BB-MAX-RSI_Version1  <<<--- Line Number 1
 #property copyright "See Accompanying Licence"
 #property link      "https://github.com/wiseman-timelord"
 #property version   "1.00"
