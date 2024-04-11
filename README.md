@@ -94,6 +94,26 @@ void OnDeinit(const int reason) {
     // Cleanup code here...
 }
 ```
+- External Inputs...
+```
+string _EA_Settings_ = "--= EA Settings - ( EA/Backtest Settings ) =--";
+int MagicNumber = 12345; // Unique Identification of Chart
+double LossPercentOff = 20.0; // % Loss to Shutdown EA
+double DrawdownPercentOff = 33.0; // % Drawdown to Shutdown EA
+string _Trade_Restrictions_ = "--= Restrictions Section - ( Settings For Trading ) =--";
+CustomBarsNumber Min_Order_Bars = EIGHT_BARS; // Number of Bars per Order
+double MaxSpreadAvePipMulti = 2.0; // Max Spread Average Pip Multiplier
+int Trade_Slots = 2; // Maximum Orders across All Charts.
+Custom_Dayfilter_Config Dayfilter_Days = MIDDLE_WEEK; // Set the default day filter
+string _Strategy_Configuration_ = "--= Strategy Section ( Strategy Settings ) =--";
+StrategyTimeframe Strategies_Timeframe = H3_TIME; // TimeFrame for IchiMoku
+OrderDirections Order_Direction = BUY_SELL; // Direction of Orders
+double RiskRewardRatio = 1.5; // TP in Ratio to SL
+double MaxRiskPercent = 7.5; // Maximum Risk in Percent
+string _Signal_Confirmation_ = "--= Signal Restriction  ( Loss Prevention ) =--";
+Signal_Filter_Type Signal_Filter = NO_FILTER; // Choose your filter type
+int Smma_Period = 100; // Smma Period (Default = 100)
+```
 
 ## Requirements
 - MetaTrader 5.
