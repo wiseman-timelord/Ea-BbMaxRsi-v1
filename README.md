@@ -1,7 +1,7 @@
 # Mql5EaGenericPlus-v2
 
 ### Status
-- Under ongoing development. Currently awaiting re-creation, as uploaded wrong one, and then couldnt get back to original, and am now making a EA from a somewhat near original script. Will re-upload later.
+- Under ongoing development. Currently awaiting re-creation, as uploaded wrong one, and then couldnt get back to original, and am now making a EA from a somewhat near original script. Will re-upload later, you can check out what I did here (Mt5Mql5EaMakerPro botched demonstration)[https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro].
 - Feel free to download this project, and if it makes a great trader, then also feel free to, fork and upload.
 
 ## Description
@@ -124,7 +124,7 @@ int Smma_Period = 100; // Smma Period (Default = 100)
 - Algo-Trading Experience.
 
 ### Usage
-- Here is a (Mt5Mql5EaMakerPro demonstration)[https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro].
+- Here will be a ChatGPT example of how to implement the strategy of your choice ... .
 - Its not possible to use this script directly as an EA, you need to implement the main strategy, but otherwise.
 - Enable Min_Order_Barsbetween, EIGHT_BARS and SIXTEEN_BARS, to avoid random, spam timing and max orders exceeded, related profit results.
 
