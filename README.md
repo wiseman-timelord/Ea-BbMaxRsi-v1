@@ -1,16 +1,18 @@
 # Mql5EaGenericPlus-v2
 
 ### Status
-The Current blueprint for creating a EA with a SMMA 100 DayFilter confirmation. Feel free to download this project, and if you can make a trader better than the traders I have made for it, then also feel free to, fork and upload.
+- Under ongoing development. 
+- Feel free to download this project, and if it makes a great trader, then also feel free to, fork and upload.
 
 ## Description
-The "BB-MAX-RSI" EA Version 1 for MetaTrader 5, is a cut down version of the EA I have personally developed, serving as a solid foundation for developing your own trading bot. It has placeholder parts in in, "Strategy Manager" and "Execute Order", as well as a dummy function representing calculations required for main strategy. Gpt4 can be instructed to inspect the script, and then implement any combinations of main trading strategy, then fix the leftover issues. 
+The "Mql5EaGenericPlus-v2" EA Version 2 for MetaTrader 5, is a cut down version of the Latest EA I have personally developed, serving as a solid foundation for developing your own trading bot. It has placeholder parts in in, "Strategy Manager" and "Execute Order", as well as a dummy function representing calculations required for main strategy. Gpt4 can be instructed to inspect the script, and then implement any combinations of main trading strategy, then fix the leftover issues. 
 
 ### Features
 - **Descriptive Placeholder Parts:** Implement your own choice of strategy with customizable settings.
 - **All other required code:** The script is complete otherwise.
 - **Custom Enums**: Custom Enums for impressive reduction in calculations required during backtesting.  
 - **Reduced Calculations**: Use of NewBar enables less intensive calculations not be done every tick. 
+- **Order Confirmations**: Toggle a "Smma 100 D1" indicator, allowing effective recuperating of losses. 
 
 ### Preview
 - The Descriptive Overview of the Script...
