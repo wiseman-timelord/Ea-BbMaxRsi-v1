@@ -1,7 +1,7 @@
 # Mql5EaGenericPlus-v2
 
 ### Status
-- Under ongoing development. 
+- Under ongoing development. Currently awaiting re-creation, as uploaded wrong one, and then couldnt get back to original, and am now making a EA from a somewhat near original script. Will re-upload later.
 - Feel free to download this project, and if it makes a great trader, then also feel free to, fork and upload.
 
 ## Description
