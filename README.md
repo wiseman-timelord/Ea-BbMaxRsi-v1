@@ -125,6 +125,7 @@ int Smma_Period = 100; // Smma Period (Default = 100)
 
 ### Usage
 - Its not possible to use this script directly as an EA, you need to implement the main strategy, but otherwise.
+- Enable Min_Order_Barsbetween, EIGHT_BARS and SIXTEEN_BARS, to avoid random, spam timing and max orders exceeded, related profit results.
 
 ### Notes
 - Long Running issue with MaxOrders, cant get it to do number of orders on the specific chart, max orders is global, both would be better.
