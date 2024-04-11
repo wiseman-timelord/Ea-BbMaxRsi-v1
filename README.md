@@ -18,45 +18,86 @@ The "BB-MAX-RSI" EA Version 1 for MetaTrader 5, is a cut down version of the EA 
 - **Magic Number Use:** Identifies trades with a unique number, distinguishing EA-managed trades.
 
 ### Preview
-- The external inputs...
+- The Descriptive Overview of the Script...
 ```
+// Script: BaseStrategy_Template
+#property copyright "Your Copyright"
+#property link      "https://www.mql5.com"
+#property strict
+
+// MT5 Includes
+#include <Trade\Trade.mqh>
+#include <Indicators\Indicators.mqh>
+
+// Custom Enums
+enum CustomBarsNumber { /* Your enums here */ };
+enum StrategyTimeframe { /* Your enums here */ };
+enum OrderDirections { /* Your enums here */ };
+enum TradeDirection { /* Your enums here */ };
+enum Signal_Filter_Type { /* Your enums here */ };
+enum Custom_Dayfilter_Config { /* Your enums here */ };
+
 // External Inputs
-input string ___Ea_Settings___ = "--= EA Settings - (Settings For The Ea) =--";
-input int MagicNumber = 12345; 
-input double LossPercentOff = 25.0;
-input string ___Timer_Settings___ = "--= Timer Settings - (Settings For Timings) =--";
-input double MaxSpreadInPips = 25;
-input bool TradeOnMonday = true;
-input bool TradeOnTuesday = true;
-input bool TradeOnWednesday = true;
-input bool TradeOnThursday = true;
-input bool TradeOnFriday = true;
-input string ___General_Strategy___ = "--= General Strategy (Strategy Switches) =--";
-input StrategySelection StrategyUsed = BB_RSI_MAX_STRATEGY;
-input OrderDirections Order_Direction = BUY_SELL;
-input int Trade_Slots = 2;
-input double RiskPercent = 2.0;
-input double TakeProfit = 50;
-input double StopLoss = 50;
-input string ___Bollinger_Bands___ = "--= Bollinger Bands (Strategy One) =--";
-input Signal_Bars_Valid_Long BB_BarsValid = EIGHT__BARS;
-input CustomTimeFramesStrategy BB_TimeFrame = H1_TIME;
-input Trade_Direction BB_Direction = FOLLOW_TREND;
-input double BB_Deviation = 2.0;
-input int BB_Period = 20;
-input string ___Moving_Average_Crossover___ = "--= Moving Average Crossover (Strategy Two) =--";
-input Signal_Bars_Valid_Long MAX_BarsValid = EIGHT__BARS;
-input CustomTimeFramesStrategy MAX_TimeFrame = H1_TIME;
-input Trade_Direction MAX_TrendFollowing = FOLLOW_TREND; 
-input int FastMA_Period = 9;
-input int SlowMA_Period = 21;
-input string ___Relative_Strength_Index___ = "--= Relative Strength Index (Strategy Three) =--";
-input Signal_Bars_Valid_Short RSI_BarsValid = ONE_BAR;
-input CustomTimeFramesStrategy RSI_TimeFrame = H1_TIME;
-input Trade_Direction RSI_Direction = FOLLOW_TREND;
-input int RSI_Period = 14;
-input double RSI_Buy_Level = 30.0;
-input double RSI_Sell_Level = 70.0;
+input string _EA_Settings_ = "--= EA Settings =--";
+// Define your EA settings here...
+
+// MT5 Classes
+CTrade trade;
+
+// Global Variables
+// Define your global variables here...
+
+// Function OnInit
+int OnInit() {
+    // Initialization code here...
+    return INIT_SUCCEEDED;
+}
+
+// Function OnTick
+void OnTick() {
+    // Main trading logic here...
+}
+
+// Placeholder Strategy Manager Function
+void StrategyManager() {
+    // Define your strategy management logic here...
+    // For example, evaluate conditions for a trading signal:
+    bool signalBuy = false;
+    bool signalSell = false;
+
+    // Dummy conditions for buy or sell signals
+    if (/* condition for a buy signal */) {
+        signalBuy = true;
+    } 
+    if (/* condition for a sell signal */) {
+        signalSell = true;
+    }
+
+    // Execute trade based on the evaluated signal
+    if(signalBuy) {
+        ExecuteOrder(DIRECTION_BUY);
+    } else if(signalSell) {
+        ExecuteOrder(DIRECTION_SELL);
+    }
+}
+
+// Function to Update Strategy Indicators or Conditions
+void UpdateStrategyConditions() {
+    // Update any conditions or indicators needed for your strategy
+}
+
+// Function ExecuteOrder
+void ExecuteOrder(TradeDirection direction) {
+    // Execution logic here...
+}
+
+// Other Utility Functions as needed...
+// For example, CalculateSLandTP, CheckShutdownCriteria, etc.
+
+// Function OnDeinit
+void OnDeinit(const int reason) {
+    // Cleanup code here...
+}
 ```
 
 ## Requirements
