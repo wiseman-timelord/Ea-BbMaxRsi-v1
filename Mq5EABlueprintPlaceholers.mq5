@@ -63,6 +63,18 @@ input StrategyTimeframe Strategies_Timeframe = H3_TIME; // TimeFrame for IchiMok
 input OrderDirections Order_Direction = BUY_SELL; // Direction of Orders
 input double RiskRewardRatio = 1.5; // TP in Ratio to SL
 input double MaxRiskPercent = 7.5; // Maximum Risk in Percent
+input int Bollinger_Period = 14; 
+input ENUM_TIMEFRAMES Bollinger1_TimeFrame = H1_TIME; 
+input double Bollinger1_Deviation = 2.0; 
+input ENUM_TIMEFRAMES Bollinger2_TimeFrame = H3_TIME; 
+input double Bollinger2_Deviation = 2.0; 
+input int RSI_Period = 14; 
+input ENUM_TIMEFRAMES RSI1_TimeFrame = H1_TIME; 
+input int RSI1_Buy_Percent = 30; 
+input int RSI1_Sell_Percent = 70; 
+input ENUM_TIMEFRAMES RSI2_TimeFrame = H3_TIME; 
+input int RSI2_Buy_Percent = 30; 
+input int RSI2_Sell_Percent = 70; 
 input string _Signal_Confirmation_ = "--= Signal Restriction  ( Loss Prevention ) =--";
 input Signal_Filter_Type Signal_Filter = NO_FILTER; // Choose your filter type
 input int Smma_Period = 100; // Smma Period (Default = 100)
@@ -94,7 +106,10 @@ bool smmaTrendDirection;
 bool trendIsUp = false;
 int smmaHandle;
 double AverageSpread = 25.0;
-double MaxSpreadPips; 
+double MaxSpreadPips;
+double upperBand1, lowerBand1, upperBand2, lowerBand2;
+double rsi1, rsi2;
+bool buySignal, sellSignal; 
 
 // Function OnInit
 int OnInit() {
@@ -194,29 +209,54 @@ bool IsTradeDay() {
 
 // Manage Strategies
 void StrategyManager() {
-    // Placeholder for New Strategy Entry Conditions
-    CheckEntryConditions();
-    
-    if(executeBuy && SignalRestrictions(DIRECTION_BUY)) {
+    // Calculate signals
+    CalculateBollingerBandsSignals();
+    CalculateRSISignals();
+
+    // Continue with original StrategyManager logic
+    if(buySignal && SignalRestrictions(DIRECTION_BUY)) {
         Print("Signal allowed. Executing BUY order...");
         ExecuteOrder(DIRECTION_BUY);
-    } else if(executeSell && SignalRestrictions(DIRECTION_SELL)) {
+    } else if(sellSignal && SignalRestrictions(DIRECTION_SELL)) {
         Print("Signal allowed. Executing SELL order...");
         ExecuteOrder(DIRECTION_SELL);
     } else {
-        Print("Order denied by Signal Restrictions.");
+        Print("No entry signals or denied by Signal Restrictions.");
         IsTradeInBar = true;
     }
 }
-// Placeholder function for checking new strategy entry conditions
-void CheckEntryConditions() {
-    // Placeholder for implementing the entry logic of the new strategy
-    // Update executeBuy and executeSell based on the new strategy's conditions
-    /* Example Placeholder Logic */
-    // executeBuy = /* Condition for a buy order */;
-    // executeSell = /* Condition for a sell order */;
-}
+void CalculateBollingerBandsSignals() {
+    // Bollinger Bands for TimeFrame 1
+    int bbHandle1 = iBands(_Symbol, Bollinger1_TimeFrame, Bollinger_Period, Bollinger1_Deviation, 0, PRICE_CLOSE);
+    double bandsArray1[1][3];
+    CopyBuffer(bbHandle1, 0, 0, 1, bandsArray1); // Main Line
+    CopyBuffer(bbHandle1, 1, 0, 1, bandsArray1); // Upper Band
+    CopyBuffer(bbHandle1, 2, 0, 1, bandsArray1); // Lower Band
+    upperBand1 = bandsArray1[0][1];
+    lowerBand1 = bandsArray1[0][2];
+    IndicatorRelease(bbHandle1);
 
+    // Bollinger Bands for TimeFrame 2
+    int bbHandle2 = iBands(_Symbol, Bollinger2_TimeFrame, Bollinger_Period, Bollinger2_Deviation, 0, PRICE_CLOSE);
+    double bandsArray2[1][3];
+    CopyBuffer(bbHandle2, 0, 0, 1, bandsArray2); // Main Line
+    CopyBuffer(bbHandle2, 1, 0, 1, bandsArray2); // Upper Band
+    CopyBuffer(bbHandle2, 2, 0, 1, bandsArray2); // Lower Band
+    upperBand2 = bandsArray2[0][1];
+    lowerBand2 = bandsArray2[0][2];
+    IndicatorRelease(bbHandle2);
+}
+// Function to Calculate RSI and Update Global Variables
+void CalculateRSISignals() {
+    // RSI for TimeFrame 1
+    rsi1 = iRSI(_Symbol, RSI1_TimeFrame, RSI_Period, PRICE_CLOSE, 0);
+    // RSI for TimeFrame 2
+    rsi2 = iRSI(_Symbol, RSI2_TimeFrame, RSI_Period, PRICE_CLOSE, 0);
+    
+    // Determine signals based on RSI thresholds
+    buySignal = (rsi1 < RSI1_Buy_Percent && rsi2 < RSI2_Buy_Percent);
+    sellSignal = (rsi1 > RSI1_Sell_Percent && rsi2 > RSI2_Sell_Percent);
+}
 // Signal Restrictions
 bool SignalRestrictions(TradeDirection direction) {
     if(Signal_Filter == NO_FILTER) {
