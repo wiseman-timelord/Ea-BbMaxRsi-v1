@@ -1,7 +1,7 @@
 # Mql5EaGenericPlus-v2
 
 ### Status
-- Under ongoing development. Currently awaiting re-creation, as uploaded wrong one, and then couldnt get back to original, and am now making a EA from a somewhat near original script. Will re-upload later, you can check out what I did here [Mt5Mql5EaMakerPro botched demonstration that somwhat works out in the end][https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro].
+- Under ongoing development. Currently awaiting re-creation, as uploaded wrong one, and then couldnt get back to original, and am now making a EA from a somewhat near original script. Will re-upload later, you can check out what I did here [Mt5Mql5EaMakerPro botched demonstration that somwhat works out in the end](https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro). That was before fixing in new session, first session should be about getting all the code in place.
 - Need to strip down the new one I make:- replace strategy with a simple strategy, then make the TP and SL and risk and lot, simple, then when working remove the strategy and replace with placeholder. 
 
 ## Description
