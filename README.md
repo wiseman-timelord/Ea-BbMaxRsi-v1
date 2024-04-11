@@ -5,7 +5,7 @@
 - Feel free to download this project, and if it makes a great trader, then also feel free to, fork and upload.
 
 ## Description
-The "Mql5EaGenericPlus-v2" EA Version 2 for MetaTrader 5, is a cut down version of the Latest EA I have personally developed, serving as a solid foundation for developing your own trading bot. It has placeholder parts in in, "Strategy Manager" and "Execute Order", as well as a dummy function representing calculations required for main strategy. Gpt4 with my GPT Personality "Mt5Mql5EaMakerPro" can be instructed to inspect the script, and then implement any combinations of main trading strategy, then fix the leftover issues. 
+The "Mql5EaGenericPlus-v2" EA Version 2 for MetaTrader 5, is a cut down version of the Latest EA I have personally developed, serving as a solid foundation for developing your own trading bot. It has placeholder parts in in, "Strategy Manager" and "Execute Order", as well as a dummy function representing calculations required for main strategy. Its intended for use with a GPT4 [profile](https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro) to implement the strategy of your choice, when it dont fix the errors in MetaEditor no more, then search for other profiles with "Mql5", a few will pop up, and find a good one to finish the remaining parts.
 
 ### Features
 - **Descriptive Placeholder Parts:** Implement your own choice of strategy with customizable settings.
@@ -124,12 +124,10 @@ int Smma_Period = 100; // Smma Period (Default = 100)
 - Algo-Trading Experience.
 
 ### Usage
-- Here will be a ChatGPT example of how to implement the strategy of your choice ... .
-- Its not possible to use this script directly as an EA, you need to implement the main strategy, but otherwise.
-- Enable Min_Order_Barsbetween, EIGHT_BARS and SIXTEEN_BARS, to avoid random, spam timing and max orders exceeded, related profit results.
-
+- Its not possible to use this script directly as an EA, you need to implement the main strategy, as I said GPT4 with a profile will do it.
 
 ### Notes
+- Enable Min_Order_Barsbetween, EIGHT_BARS and SIXTEEN_BARS, to avoid random, spam timing and max orders exceeded, related profit results.
 - Long Running issue with MaxOrders, cant get it to do number of orders on the specific chart, max orders is global, both would be better.
 - It uses H1 to H6, this produces better reproducable results, leading to lower drawdowns.
 
