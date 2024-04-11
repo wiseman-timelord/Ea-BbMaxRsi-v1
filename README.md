@@ -124,7 +124,7 @@ int Smma_Period = 100; // Smma Period (Default = 100)
 - Algo-Trading Experience.
 
 ### Usage
-- Here is a (Mt5Mql5EaMakerPro demonstration)["https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro"].
+- Here is a (Mt5Mql5EaMakerPro demonstration)[https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro].
 - Its not possible to use this script directly as an EA, you need to implement the main strategy, but otherwise.
 - Enable Min_Order_Barsbetween, EIGHT_BARS and SIXTEEN_BARS, to avoid random, spam timing and max orders exceeded, related profit results.
 
