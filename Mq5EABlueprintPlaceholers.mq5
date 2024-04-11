@@ -287,7 +287,7 @@ void UpdateSMMAValues() {
 
 // Execute Trade
 void ExecuteOrder(TradeDirection direction) {
-    GlobalLotSize = CalculateLotSize(MaxRiskPercent, _Symbol, GlobalCloudThickness);
+    GlobalLotSize = CalculateLotSize(MaxRiskPercent, _Symbol, CalculationForLotsize);  << Insert calculation of lot size here.
     double entryPrice = (direction == DIRECTION_BUY) ? SymbolInfoDouble(_Symbol, SYMBOL_ASK) : SymbolInfoDouble(_Symbol, SYMBOL_BID);
     CalculateSLandTP(direction, entryPrice);
     ulong ticket = 0;
@@ -323,10 +323,10 @@ void CalculateSLandTP(TradeDirection direction, double entryPrice) {
     // GlobalSLPrice = NormalizeDouble(GlobalSLPrice, _Digits);
     // GlobalTPPrice = NormalizeDouble(GlobalTPPrice, _Digits);
 }
-double CalculateLotSize(double riskPercent, string symbol, double cloudThickness) {
+double CalculateLotSize(double riskPercent, string symbol, double ValueForLotsize) {    << Insert Value for lot size here.
     double accountBalance = AccountInfoDouble(ACCOUNT_BALANCE);
     double riskMoney = accountBalance * riskPercent / 100.0;
-    double stopLossPips = cloudThickness / _Point;
+    double stopLossPips = ValueForLotsize / _Point;  << Insert calculation of lot size here.
     double pipValue = SymbolInfoDouble(symbol, SYMBOL_TRADE_CONTRACT_SIZE) * 0.00010;
     if(StringFind(symbol, "JPY") > -1) pipValue *= 0.01;
     double monetaryValuePerPip = pipValue;
