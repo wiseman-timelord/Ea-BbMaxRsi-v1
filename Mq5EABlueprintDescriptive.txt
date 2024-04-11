@@ -1,0 +1,78 @@
+// Script: BaseStrategy_Template
+#property copyright "Your Copyright"
+#property link      "https://www.mql5.com"
+#property strict
+
+// MT5 Includes
+#include <Trade\Trade.mqh>
+#include <Indicators\Indicators.mqh>
+
+// Custom Enums
+enum CustomBarsNumber { /* Your enums here */ };
+enum StrategyTimeframe { /* Your enums here */ };
+enum OrderDirections { /* Your enums here */ };
+enum TradeDirection { /* Your enums here */ };
+enum Signal_Filter_Type { /* Your enums here */ };
+enum Custom_Dayfilter_Config { /* Your enums here */ };
+
+// External Inputs
+input string _EA_Settings_ = "--= EA Settings =--";
+// Define your EA settings here...
+
+// MT5 Classes
+CTrade trade;
+
+// Global Variables
+// Define your global variables here...
+
+// Function OnInit
+int OnInit() {
+    // Initialization code here...
+    return INIT_SUCCEEDED;
+}
+
+// Function OnTick
+void OnTick() {
+    // Main trading logic here...
+}
+
+// Placeholder Strategy Manager Function
+void StrategyManager() {
+    // Define your strategy management logic here...
+    // For example, evaluate conditions for a trading signal:
+    bool signalBuy = false;
+    bool signalSell = false;
+
+    // Dummy conditions for buy or sell signals
+    if (/* condition for a buy signal */) {
+        signalBuy = true;
+    } 
+    if (/* condition for a sell signal */) {
+        signalSell = true;
+    }
+
+    // Execute trade based on the evaluated signal
+    if(signalBuy) {
+        ExecuteOrder(DIRECTION_BUY);
+    } else if(signalSell) {
+        ExecuteOrder(DIRECTION_SELL);
+    }
+}
+
+// Function to Update Strategy Indicators or Conditions
+void UpdateStrategyConditions() {
+    // Update any conditions or indicators needed for your strategy
+}
+
+// Function ExecuteOrder
+void ExecuteOrder(TradeDirection direction) {
+    // Execution logic here...
+}
+
+// Other Utility Functions as needed...
+// For example, CalculateSLandTP, CheckShutdownCriteria, etc.
+
+// Function OnDeinit
+void OnDeinit(const int reason) {
+    // Cleanup code here...
+}
