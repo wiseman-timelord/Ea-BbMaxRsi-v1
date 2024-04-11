@@ -127,12 +127,8 @@ int Smma_Period = 100; // Smma Period (Default = 100)
 - Its not possible to use this script directly as an EA, you need to implement the main strategy, but otherwise.
 
 ### Notes
-- The number of bars thing, is to coordinate signals between indicators, there are 2 enums for this, long and short, same with timeframes I think.
-- To avoid market manipulation you should use a TimeFrame over M5, but, I would use at least M15, to remove such randomness.
-- To gain consistent results, I would advise backtesting for 4 years of data, therein, you would probably want your TimeFrame to then become M30 or H1, for speed.
-- I do notice that doing a backtest for short periods of history with a high takeprofit will definately result in non-reproducable results.
-- If you add more than 3 strategies, it starts to become a massive number of calculations involved, also GPT context suffers.
-- GPT: "Considering the complexity and features of your EA, a base price could be in the $50 to $100 range"
+- Long Running issue with MaxOrders, cant get it to do number of orders on the specific chart, max orders is global, both would be better.
+- It uses H1 to H6, this produces better reproducable results, leading to lower drawdowns.
 
 ## Disclaimer
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
