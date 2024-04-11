@@ -5,7 +5,7 @@
 - Feel free to download this project, and if it makes a great trader, then also feel free to, fork and upload.
 
 ## Description
-The "Mql5EaGenericPlus-v2" EA Version 2 for MetaTrader 5, is a cut down version of the Latest EA I have personally developed, serving as a solid foundation for developing your own trading bot. It has placeholder parts in in, "Strategy Manager" and "Execute Order", as well as a dummy function representing calculations required for main strategy. Gpt4 can be instructed to inspect the script, and then implement any combinations of main trading strategy, then fix the leftover issues. 
+The "Mql5EaGenericPlus-v2" EA Version 2 for MetaTrader 5, is a cut down version of the Latest EA I have personally developed, serving as a solid foundation for developing your own trading bot. It has placeholder parts in in, "Strategy Manager" and "Execute Order", as well as a dummy function representing calculations required for main strategy. Gpt4 with my GPT Personality "Mt5Mql5EaMakerPro" can be instructed to inspect the script, and then implement any combinations of main trading strategy, then fix the leftover issues. 
 
 ### Features
 - **Descriptive Placeholder Parts:** Implement your own choice of strategy with customizable settings.
@@ -124,8 +124,10 @@ int Smma_Period = 100; // Smma Period (Default = 100)
 - Algo-Trading Experience.
 
 ### Usage
+- Here is a (Mt5Mql5EaMakerPro demonstration)["https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro"].
 - Its not possible to use this script directly as an EA, you need to implement the main strategy, but otherwise.
 - Enable Min_Order_Barsbetween, EIGHT_BARS and SIXTEEN_BARS, to avoid random, spam timing and max orders exceeded, related profit results.
+
 
 ### Notes
 - Long Running issue with MaxOrders, cant get it to do number of orders on the specific chart, max orders is global, both would be better.
