@@ -1,13 +1,13 @@
-# Ea-BbMaxRsi-v1
+# Mql5EaGenericPlus-v2
 
 ### Status
-The EA represents stage 1 of completion, after, revisit and cleanup. This works well enough as a example EA; feel free to fork away, and let me know if its a winner!
+The Current blueprint for creating a EA with a SMMA 100 DayFilter confirmation,  feel free to fork away, and let me know if its a winner!
 
 ## Description
 The "BB-MAX-RSI" EA Version 1 for MetaTrader 5, is a cut down version of the EA I have personally developed, serving as a solid foundation for developing your own trading bot. It combines Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable risk management and trading settings. This adaptable and efficient tool is designed to cater to various market scenarios and trading styles. In short, its somewhat no frills, and would require further work to become a profitable/reliable EA. Currently its designed, so you can swap out the strategies, try differing strategies in combination, the default strategies are simpler ones requiring less inputs. After trying a few strategies, and finding the best combination, you could then hardcode the strategies, and then logically add for example, trail stop or loss stop volatility. 
 
 ### Features
-- **Multiple Strategies:** Offers Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable settings.
+- **Placeholder Main Strategy:** Implement your own choice of strategy with customizable settings.
 - **Trade Directionality:** Allows trend following, trend reversal, and bi-directional trades.
 - **Risk Management:** Enables setting risk levels, stop loss, and take profit to protect capital.
 - **Custom Time Frames:** Supports various time frames from 30 minutes to 12 hours for strategy execution.
