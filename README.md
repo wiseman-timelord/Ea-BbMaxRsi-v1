@@ -1,21 +1,16 @@
 # Mql5EaGenericPlus-v2
 
 ### Status
-The Current blueprint for creating a EA with a SMMA 100 DayFilter confirmation,  feel free to fork away, and let me know if its a winner!
+The Current blueprint for creating a EA with a SMMA 100 DayFilter confirmation. Feel free to download this project, and if you can make a trader better than the traders I have made for it, then also feel free to, fork and upload.
 
 ## Description
-The "BB-MAX-RSI" EA Version 1 for MetaTrader 5, is a cut down version of the EA I have personally developed, serving as a solid foundation for developing your own trading bot. It combines Bollinger Bands, Moving Average Crossover, and RSI strategies with customizable risk management and trading settings. This adaptable and efficient tool is designed to cater to various market scenarios and trading styles. In short, its somewhat no frills, and would require further work to become a profitable/reliable EA. Currently its designed, so you can swap out the strategies, try differing strategies in combination, the default strategies are simpler ones requiring less inputs. After trying a few strategies, and finding the best combination, you could then hardcode the strategies, and then logically add for example, trail stop or loss stop volatility. 
+The "BB-MAX-RSI" EA Version 1 for MetaTrader 5, is a cut down version of the EA I have personally developed, serving as a solid foundation for developing your own trading bot. It has placeholder parts in in, "Strategy Manager" and "Execute Order", as well as a dummy function representing calculations required for main strategy. Gpt4 can be instructed to inspect the script, and then implement any combinations of main trading strategy, then fix the leftover issues. 
 
 ### Features
-- **Placeholder Main Strategy:** Implement your own choice of strategy with customizable settings.
-- **Trade Directionality:** Allows trend following, trend reversal, and bi-directional trades.
-- **Risk Management:** Enables setting risk levels, stop loss, and take profit to protect capital.
-- **Custom Time Frames:** Supports various time frames from 30 minutes to 12 hours for strategy execution.
-- **Day-of-Week Control:** Permits trading on selected weekdays, optimizing trading strategy.
-- **Equity Protection:** Stops trading if losses exceed a specified percentage, safeguarding account equity.
-- **Signal Processing:** Combines multiple indicators for robust buy or sell decisions.
-- **Spread Management:** Executes trades considering spread conditions to ensure favorable entry.
-- **Magic Number Use:** Identifies trades with a unique number, distinguishing EA-managed trades.
+- **Descriptive Placeholder Parts:** Implement your own choice of strategy with customizable settings.
+- **All other required code:** The script is complete otherwise.
+- **Custom Enums**: Custom Enums for impressive reduction in calculations required during backtesting.  
+- **Reduced Calculations**: Use of NewBar enables less intensive calculations not be done every tick. 
 
 ### Preview
 - The Descriptive Overview of the Script...
@@ -107,18 +102,7 @@ void OnDeinit(const int reason) {
 - Algo-Trading Experience.
 
 ### Usage
-- Do not use it, you will loose money, unless...
-1. You know what you are doing.
-2. You are not trading money, that you do not mind loosing.
-3. You have somehow upgraded the code, to make it more effective.
-4. You have done extensive backtesing on it.
-5. You have done forward backtest on demo account.
-- All that said...
-1. Copy the Ea to your `MQL5\Experts` folder.
-2. Load the `*.set` Settings file provided, ensure genetic backtest is selected.
-3. Its not great, but the loss-shutdown input will produce better quality results with less losses, the idea is put it higher for backtesting, then loosen it up for live/demo trading.
-4. Setup the other parts of the backtest, note its designed for between a M30-H12 timeframe.
-5. Run genetic backtest. 
+- Its not possible to use this script directly as an EA, you need to implement the main strategy, but otherwise.
 
 ### Notes
 - The number of bars thing, is to coordinate signals between indicators, there are 2 enums for this, long and short, same with timeframes I think.
