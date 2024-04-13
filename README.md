@@ -1,7 +1,9 @@
 # Mql5EaGenericPlus-v2
 
 ### Status
-- Under ongoing development. Currently awaiting re-creation, as uploaded wrong one, and then couldnt get back to original, and am now making a EA from a somewhat near original script. Will re-upload later. Need to strip down the new one I make:- replace strategy with a simple strategy, then make the TP and SL and risk and lot, simple, then when working remove the strategy and replace with placeholder. 
+- Under ongoing development... 
+1. Currently awaiting re-creation, as uploaded wrong one over original twice, and then couldnt get back to original, and am now making a EA from a somewhat near original script. Will re-upload later. 
+2. Will need to strip down the new one I make:- replace strategy with a simple strategy, then make the TP and SL and risk and lot, simple, then when working remove the strategy and replace with placeholder. Possibly it will be a better version as, I will build up from the stripped down version, then strip it back, will make the non-main strategy parts more generic and robust. 
 
 ## Description
 The "Mql5EaGenericPlus-v2" EA Version 2 for MetaTrader 5, is a cut down version of the Latest EA I have personally developed, serving as a solid foundation for developing your own trading bot. It has placeholder parts in in, "Strategy Manager" and "Execute Order", as well as a dummy function representing calculations required for main strategy. Its intended for use with a GPT4 [profile](https://chat.openai.com/g/g-UULzpPpmc-mt5mql5eamakerpro) to implement the strategy of your choice, when it dont fix the errors in MetaEditor no more, then search for other profiles with "Mql5", a few will pop up, and find a good one to finish the remaining parts. Feel free to download this project, and if it makes a great trader, then also feel free to, fork and upload.
